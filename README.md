@@ -159,25 +159,6 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python train.py \
     train.resume_ckpt=auto
 ```
 
-### Ablation flags
-
-Toggle individual components in the config to isolate each contribution:
-
-```yaml
-# configs/cift/train_cift_generalized.yaml
-ablation:
-  use_diffusion_loss: true   # diffusion-guided auxiliary supervision
-  use_dual_upsample:  true   # independent target/donor upsampling branches
-  use_mamba_head:     true   # XID-Mamba relational branch
-  use_global_smc:     true   # Global Head + SMC source-free branches
-  use_dimf:           true   # full CIFT (all components)
-  use_igl:            true   # IGS cosine contrastive loss
-  use_gap_loss:       true   # IGS Euclidean gap regression
-  dual_drop_prob:     0.15   # XID-Mamba stochastic disable probability
-```
-
-Set `use_mamba_head: false` and `use_igl: false` to obtain the source-free head baseline. Set `use_diffusion_loss: false` for the matched diffusion-removal ablation.
-
 ---
 
 ## Evaluation
